@@ -1,0 +1,17 @@
+{
+  "name": "webdev.local",
+  "version": "0.0.0",
+  "homepage": "https://github.com/eZ0/webdev",
+  "authors": [
+    "Ksenia Karelskaya <kusksu@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ]
+}

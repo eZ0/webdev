@@ -33,8 +33,5 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable",
-	"require-dev": {
-		"way/generators": "dev-master"
-	}
+	"minimum-stability": "stable"
 }

@@ -11,18 +11,15 @@
 |
 */
 
-Route::get('/', ['as' => 'home', function()
-{
-	return View::make('hello');
-}]);
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
 
-Route::get('profile', function()
-{
-	return "Welcome, " . Auth::user()->username;
-})->before('auth');
+Route::get('/register', ['as' => 'register', 'uses' =>'RegistrationController@create']);
+Route::resource('registration', 'RegistrationController');
 
-Route::get('login', 'SessionsController@create');
-Route::get('logout', 'SessionsController@destroy');
+Route::get('profile', ['as' => 'profile', 'uses' => 'ProfileController@index'])->before('auth');
+
+Route::get('login', array('as'=>'login', 'uses'=>'SessionsController@create') );
+Route::get('logout', array('as'=>'logout', 'uses'=>'SessionsController@destroy') );
 
 Route::resource('sessions', 'SessionsController', ['only' => ['create', 'destroy', 'store']]);
 

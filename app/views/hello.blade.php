@@ -2,5 +2,5 @@
 @extends('layouts.default')
 
 @section('content')
-	Here comes the home page!:)
+	Here comes the home page !:)
 @stop
