@@ -43,7 +43,7 @@ class PostsController extends \BaseController {
 			'body' => $input['body']
 		]);
 
-		
+		return Redirect::home();
 	}
 
 	/**
