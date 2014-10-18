@@ -2,6 +2,10 @@
 
 
 @section('content')
+	<h3>Add New Post</h3>
+	@include('posts/partials/form')
+
+
 	<h1>All posts</h1>
 	<ul class='list-group'>
 		@foreach($posts as $post)

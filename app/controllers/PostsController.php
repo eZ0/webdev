@@ -33,7 +33,17 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		
+		$input = Input::all();
+		$id = Auth::id();
+
+		Post::create([
+			'user_id' => $id,
+			'title' => $input['title'],
+			'body' => $input['body']
+		]);
+
+		
 	}
 
 	/**

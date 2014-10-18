@@ -6,6 +6,7 @@ Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
 # Posts
 Route::get('posts', ['as' => 'allposts', 'uses' => 'PostsController@index']);
 Route::get('posts/{id}', 'PostsController@show')->where('id', '\d+');
+Route::post('posts', 'PostsController@store');
 
 
 # Registration
