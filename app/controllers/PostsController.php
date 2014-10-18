@@ -11,7 +11,7 @@ class PostsController extends \BaseController {
 	public function index()
 	{
 		$posts = Post::all();
-		return View::make('posts.index');
+		return View::make('posts.index', compact('posts'));
 	}
 
 	/**
@@ -43,9 +43,12 @@ class PostsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, $username)
 	{
-		//
+		// $post = Post::with('user')->findOrFail($id);
+		$user = User::with('posts')->whereUsername($username)->first();
+		$post = $user->posts;
+		return View::make('posts.show', compact('user','post'));
 	}
 
 	/**

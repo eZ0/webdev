@@ -43,4 +43,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return Auth::user()->id == $this->id;
 	}
 
+	public function posts()
+      {
+            return $this->hasMany('Post');
+      }
+
 }
