@@ -40,6 +40,8 @@ class RegistrationController extends \BaseController {
 		// $input = Input::only('username', 'email', 'password');
 		//$this->registrationForm->validate($input);
 		$user = User::create(Input::only('username', 'email', 'password'));
+		$profile = new Profile();
+		$user->profile()->save($profile);
 
 		Auth::login($user);
 

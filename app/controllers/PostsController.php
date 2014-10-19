@@ -10,7 +10,7 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::all();
+		$posts = Post::orderBy('created_at', 'desc')->get();
 		return View::make('posts.index', compact('posts'));
 	}
 
@@ -43,7 +43,7 @@ class PostsController extends \BaseController {
 			'body' => $input['body']
 		]);
 
-		return Redirect::home();
+		return Redirect::route('allposts');
 	}
 
 	/**
@@ -55,10 +55,10 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id, $username)
 	{
-		// $post = Post::with('user')->findOrFail($id);
-		$user = User::with('posts')->whereUsername($username)->first();
-		$post = $user->posts;
-		return View::make('posts.show', compact('user','post'));
+		$post = Post::with('users');
+		// $user = User::with('posts')->whereUsername($username)->first();
+		// $post = $user->posts->orderBy('created_at', 'desc')->get();
+		return View::make('posts.show', compact('post'));
 	}
 
 	/**
