@@ -23,5 +23,14 @@
       
       {{HTML::script('bower_components/jquery/dist/jquery.min.js')}}
       {{HTML::script('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js')}}
+
+      <script>
+            $('.comments_create_form').on('keydown', function(e){
+                  if(e.keyCode == 13){
+                        e.preventDefault();
+                        $(this).submit();
+                  }
+            });
+      </script>
 </body>
 </html>

@@ -8,6 +8,8 @@ Route::get('posts', ['as' => 'allposts', 'uses' => 'PostsController@index']);
 Route::get('posts/{id}', 'PostsController@show')->where('id', '\d+');
 Route::post('posts', 'PostsController@store');
 
+# Comment
+Route::post('posts/{id}/comments', ['as' => 'comment_path', 'uses' => 'CommentsController@store']);
 
 # Registration
 Route::get('/register', ['as' => 'register', 'uses' =>'RegistrationController@create']);

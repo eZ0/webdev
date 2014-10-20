@@ -53,12 +53,15 @@ class PostsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id, $username)
+	public function show($id)
 	{
-		$post = Post::with('users');
+		// $post = Post::with('users');
 		// $user = User::with('posts')->whereUsername($username)->first();
 		// $post = $user->posts->orderBy('created_at', 'desc')->get();
-		return View::make('posts.show', compact('post'));
+		// $comment = Comment::with('post')->findOrFail($id);
+		$post = Post::with('user')->findOrFail($id);
+		$user = User::with('posts');
+		return View::make('posts.show', compact('post', 'user'));
 	}
 
 	/**
