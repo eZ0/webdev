@@ -3,8 +3,9 @@
 
 @section('content')
 	<h3>Add New Post</h3>
-	@include('posts/partials/form')
-
+	@if( !(Auth::guest())  ) 
+		@include('posts/partials/form')
+	@endif
 
 	<h1>All posts</h1>
 	<ul class='list-group'>

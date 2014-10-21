@@ -1,5 +1,6 @@
 <div class="menu">
            		{{ HTML::linkRoute('home', 'Home', array(), array('class' => 'btn')) }}
+           		{{ HTML::linkRoute('allposts', 'News', array(), array('class' => 'btn')) }}
            	@if (Auth::guest())
            		{{ HTML::linkRoute('login', 'Sign In', array(), array('class' => 'btn')) }}
             	{{ HTML::linkRoute('register', 'Sign Up', array(), array('class' => 'btn')) }}

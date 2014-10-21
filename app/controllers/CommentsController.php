@@ -1,9 +1,6 @@
 <?php
 
 class CommentsController extends \BaseController {
-
-
-
 	/**
 	 * Leave a new comment
 	 * POST /comments
@@ -12,19 +9,12 @@ class CommentsController extends \BaseController {
 	 */
 	public function store()
 	{
-		// fetch the input 
-		// execute a command to leave the comment on post
-		// go back
 		$input = Input::all();
 		$id = Auth::id();
-		//$post = Post::all();
 		
-		$post = Post::find(1);
-		//var_dump($post->id);
-
 		Comment::create([
 			'user_id' => $id,
-			'post_id' => $post->id,
+			'post_id' => $input['post_id'],
 			'body' => $input['body']
 		]);
 
