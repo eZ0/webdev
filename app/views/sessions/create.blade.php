@@ -1,28 +1,28 @@
 @extends('layouts.default')
 
-<h1>Login</h1>
-
 @section('content')
 
-{{ Form::open(array('route' => 'sessions.store'))}}
+	<h1>Login</h1>
 
-<ul>
-	<li>
-		{{ Form::label('email', 'Email:') }}
-		{{ Form::text('email') }}
-	</li>
-	<li>
-		{{ Form::label('password', 'Password:') }}
-		{{ Form::password('password') }}
-	</li>
+	{{ Form::open(array('route' => 'sessions.store'))}}
 
-	<li>
-		{{ Form::submit('Login') }}
-		<br/>
-		{{ link_to_route('password_resets.create', 'Forgot your password?') }}
-	</li>
-</ul>
+	<ul>
+		<li>
+			{{ Form::label('email', 'Email:') }}
+			{{ Form::text('email') }}
+		</li>
+		<li>
+			{{ Form::label('password', 'Password:') }}
+			{{ Form::password('password') }}
+		</li>
 
-{{ Form::close() }}
+		<li>
+			{{ Form::submit('Login') }}
+			<br/>
+			{{ link_to_route('password_resets.create', 'Forgot your password?') }}
+		</li>
+	</ul>
+
+	{{ Form::close() }}
 
 @stop

@@ -5,15 +5,16 @@ class Vote extends Eloquent {
 
 	public function checkUpvoted($user_id, $post_id)
 	{
-		$votes = Vote::first()->where('post_id', '=', $post_id)->where('user_id', '=', $user_id);
+		$votes = Vote::where('post_id', '=', $post_id)->where('user_id', '=', $user_id)->first();
 		//dd($votes->toArray());
-		if (($votes->user_id != $user_id && $votes->post_id != $post_id) or ($votes===NULL) ) {
+		//($votes->user_id != $user_id && $votes->post_id != $post_id) or (
+		if ($votes===NULL ) {
 			$post = new Post;
 			return $post->upvotes($post_id);
 		}
 		else
 		{ 
-			dd('you cannot pass');
+			return false;
 		}
 
 	}
