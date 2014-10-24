@@ -1,27 +1,30 @@
 @extends('layouts.default')
 
 @section('content')
-	<h1>Reset Your Password Now</h1>
+	<h3>Reset Your Password Now</h3>
+	<br/>
+		@if($errors->has())
+			@foreach( $errors->all() as $error)
+				<div class="bg-danger"> {{ $error }} </div>
+			@endforeach
+		@endif
 		{{ Form::open() }}
 			{{ Form::hidden('token', $token) }}
-			<ul>
-				<li>
-					{{ Form::label('email', 'Email:') }}
-					{{ Form::text('email') }}
-				</li>
-				<li>
-					{{ Form::label('password', 'New Password:') }}
-					{{ Form::password('password') }}
-				</li>
-				<li>
-					{{ Form::label('password_confirmation', 'Password Confirmation:') }}
-					{{ Form::password('password_confirmation') }}
-				</li>
-
-				<li>
-					{{ Form::submit('Create new password') }}
-				</li>
-			</ul>
+			<div class="form-group">
+					{{ Form::label('email', 'Email') }}
+					{{ Form::text('email', null, ['class' => 'form-control', 'required' => 'required']) }}
+			</div>
+			<div class="form-group">
+					{{ Form::label('password', 'New Password') }}
+					{{ Form::password('password', ['class' => 'form-control', 'required' => 'required']) }}
+			</div>
+			<div class="form-group">
+					{{ Form::label('password_confirmation', 'Password Confirmation') }}
+					{{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required']) }}
+			</div>
+			<div class="form-group">
+					{{ Form::submit('Create new password', ['class' => 'btn btn-primary']) }}
+			</div>
 		{{ Form::close() }}
 
 	@if (Session::has('error'))

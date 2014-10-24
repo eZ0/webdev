@@ -250,8 +250,8 @@ th {
     border: 1px solid #ddd !important; } }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
+  src: url(font-path("../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot"));
+  src: url(font-path("../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix")) format("embedded-opentype"), url(font-path("../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff")) format("woff"), url(font-path("../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf")) format("truetype"), url(font-path("../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular")) format("svg"); }
 .glyphicon {
   position: relative;
   top: 1px;
@@ -5287,7 +5287,51 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
-.container {
-  color: #494d50; }
+body {
+  padding-bottom: 40px;
+  padding-top: 40px; }
+  body .container {
+    width: 60%; }
+    body .container .header {
+      margin-bottom: 30px;
+      border-bottom: 2px solid #e5e5e5; }
+      body .container .header .text-muted {
+        padding-bottom: 20px; }
+    body .container .hellomsg {
+      padding-right: 60px;
+      padding-left: 60px;
+      border-radius: 6px;
+      padding: 30px;
+      margin-bottom: 30px;
+      background-color: #eee;
+      text-align: center; }
+      body .container .hellomsg h1 {
+        font-size: 64px; }
+      body .container .hellomsg p .lead {
+        margin-bottom: 15px;
+        font-size: 21px;
+        font-weight: 200; }
+  body ul {
+    list-style: none; }
+
+article {
+  padding-bottom: 15px; }
+  article .comment {
+    background-color: #eee;
+    border-radius: 5px; }
+
+.bg-danger {
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px; }
+
+.avatar {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  width: 100px;
+  height: 100px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,11 +1,14 @@
-<div class="menu">
-           		{{ HTML::linkRoute('home', 'Home', array(), array('class' => 'btn')) }}
-           		{{ HTML::linkRoute('allposts', 'News', array(), array('class' => 'btn')) }}
+<div class="header">
+	<ul class="nav nav-pills pull-right">
+           		<li>{{ HTML::linkRoute('home', 'Home', array(), array('class' => 'btn')) }}</li>
+           		<li>{{ HTML::linkRoute('allposts', 'News', array(), array('class' => 'btn')) }}</li>
            	@if (Auth::guest())
-           		{{ HTML::linkRoute('login', 'Sign In', array(), array('class' => 'btn')) }}
-            	{{ HTML::linkRoute('register', 'Sign Up', array(), array('class' => 'btn')) }}
+           		<li>{{ HTML::linkRoute('login', 'Sign In', array(), array('class' => 'btn')) }}</li>
+            	<li>{{ HTML::linkRoute('register', 'Sign Up', array(), array('class' => 'btn')) }}</li>
            	@else
-			{{ link_to('/'. Auth::user()->username, 'Profile') }}
-              	{{ HTML::linkRoute('logout', 'Sign Out', array(), array('class' => 'btn')) }}
+              <li>{{ link_to('/'. Auth::user()->username, 'Profile') }}</li>
+              <li>{{ HTML::linkRoute('logout', 'Sign Out', array(), array('class' => 'btn')) }}</li>
             @endif
+	</ul>
+	<h3 class="text-muted">Ponytalk</h3>
 </div>

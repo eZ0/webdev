@@ -2,11 +2,6 @@
 
 class VotesController extends \BaseController {
 	
-	public function index()
-	{
-	
-	}
-
 	public function store()
 	{
 		$vote = new Vote;
@@ -21,9 +16,7 @@ class VotesController extends \BaseController {
 			'post_id' => $post_id,
 			'vote' => '2'
 		]);
-
 		
-
 		return Redirect::back();
 	}
 

@@ -1,4 +1,69 @@
+$icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
 @import 'variables';
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap";
 
-.container { color: #494d50; }
+
+body { 
+	padding-bottom: 40px; 
+	padding-top: 40px; 
+	.container {
+		width: 60%;
+		.header {
+			margin-bottom: 30px;
+			border-bottom: 2px solid $brdrcolor;
+			.text-muted {
+				padding-bottom: 20px;
+			}
+		}
+		.hellomsg {
+			padding-right: 60px;
+			padding-left: 60px;
+			border-radius: 6px;
+			padding: 30px;
+			margin-bottom: 30px;
+			background-color: $bg-grey;
+			text-align: center;
+
+			h1 {
+				font-size: 64px;
+			}
+			p{ 
+				.lead {
+					margin-bottom: 15px;
+					font-size: 21px;
+					font-weight: 200;
+				}
+			}
+		}
+		
+	}
+	ul {
+		list-style: none;
+	}
+
+}
+article {
+	padding-bottom: 15px;
+	.comment {
+		background-color: $bg-grey;
+		border-radius: 5px;
+	}
+}
+
+.bg-danger {
+	border-radius: 5px;
+	padding: 15px;
+	margin-bottom: 10px;
+}
+
+.avatar {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	width: 100px;
+	height: 100px;
+}

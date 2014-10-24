@@ -2,26 +2,25 @@
 
 @section('content')
 
-	<h1>Login</h1>
-
+	<h3> Sign In </h3>
+	<br/>
 	{{ Form::open(array('route' => 'sessions.store'))}}
 
-	<ul>
-		<li>
-			{{ Form::label('email', 'Email:') }}
-			{{ Form::text('email') }}
-		</li>
-		<li>
-			{{ Form::label('password', 'Password:') }}
-			{{ Form::password('password') }}
-		</li>
+		<div class="form-group">
+			{{ Form::label('email', 'Email') }}
+			{{ Form::text('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'awes@me.com']) }}
+		</div>
 
-		<li>
-			{{ Form::submit('Login') }}
+		<div class="form-group">
+			{{ Form::label('password', 'Password') }}
+			{{ Form::password('password', ['class' => 'form-control', 'required' => 'required']) }}
+		</div>
+
+		<div class="form-group">
+			{{ Form::submit('Sign In', ['class' => 'btn btn-primary']) }}
 			<br/>
-			{{ link_to_route('password_resets.create', 'Forgot your password?') }}
-		</li>
-	</ul>
+			<p><small>{{ link_to_route('password_resets.create', 'Forgot your password?') }}</small></p>
+		</div>
 
 	{{ Form::close() }}
 

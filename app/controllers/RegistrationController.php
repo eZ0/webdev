@@ -2,98 +2,44 @@
 
 class RegistrationController extends \BaseController {
 
-	// function __construct(RegistrationForm $registrationForm)
-	// {
-	// 	$this->registrationForm = $registrationForm;
-	// }
-	/**
-	 * Display a listing of the resource.
-	 * GET /registration
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
 		return View::make('registration.index');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /registration/create
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		if (Auth::check()) return Redirect::home();
 		return View::make('registration.create');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /registration
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
-		// $input = Input::only('username', 'email', 'password');
-		//$this->registrationForm->validate($input);
-		$user = User::create(Input::only('username', 'email', 'password'));
-		$profile = new Profile();
-		$user->profile()->save($profile);
+		$rules = [
+			'username' =>'required',
+			'email' =>'required|email',
+			'password' => 'required',
+			'password_confirmation' => 'required|same:password'
+		];
 
-		Auth::login($user);
+		$validator = Validator::make(Input::all(), $rules);
 
-		return Redirect::home();
-	}
+		if($validator->fails()){
+			$messages = $validator->messages();
 
-	/**
-	 * Display the specified resource.
-	 * GET /registration/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+		else
+		{
+			$user = User::create(Input::only('username', 'email', 'password'));
+			
+			$profile = new Profile();
+			$user->profile()->save($profile);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /registration/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+			Auth::login($user);
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /registration/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /registration/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+			return Redirect::route('profile', $user->username);
+		}
 	}
 
 }

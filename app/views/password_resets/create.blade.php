@@ -1,15 +1,21 @@
 @extends('layouts.default')
 
 @section('content')
-	<h1>Reset Your Password</h1>
-
+	<h3>Reset Your Password</h3>
+	<br/>
+	@if($errors->has())
+			@foreach( $errors->all() as $error)
+				<div class="bg-danger"> {{ $error }} </div>
+			@endforeach
+	@endif
+	
 	{{ Form::open(['route' => 'password_resets.store']) }}
-		<div>
-			{{ Form::label('email', 'Email:') }}
-			{{ Form::text('email', null, ['required'=>true]) }}
+		<div class="form-group">
+			{{ Form::label('email', 'Email') }}
+			{{ Form::text('email', null, ['class' => 'form-control', 'required' => 'required']) }}
 		</div>
-		<div>
-			{{ Form::submit('Reset') }}
+		<div class="form-group">
+			{{ Form::submit('Reset', ['class' => 'btn btn-primary']) }}
 		</div>
 	{{ Form::close() }}
 

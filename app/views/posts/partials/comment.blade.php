@@ -1,6 +1,9 @@
-<article>
+<article class="comment">
 	<div>
-		<p> Posted by {{ $comment->user->username }} </p>
+		<p><small> Posted by {{ link_to("profile/{$comment->user->username}" , $comment->user->username) }} </small></p>
 	</div>
-	{{ $comment->body }}
+	<div>
+		{{ $comment->body }}
+	</div>
+	<br/>
 </article>
