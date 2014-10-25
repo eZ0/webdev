@@ -8,6 +8,12 @@
 	<p><img src="@if($post->image !== NULL) {{ URL::asset($post->image) }} @endif" class="img-rounded img-responsive"/></p>
 
 	<article class="post"> {{ $post->body }} </article>
+	
+	@if($errors->has())
+		@foreach( $errors->all() as $error)
+			<div class="bg-danger"> {{ $error }} </div>
+		@endforeach
+	@endif
 
 	@if( Auth::check() )
 		{{ Form::open(['route' => ['comment_path', $post->id], 'class' => 'comments_create_form']) }}
@@ -18,6 +24,7 @@
 			</div>
 		{{ Form::close() }}
 	@endif
+		<br/>
 
 	@if ($comments = $post->comments)
 		<div class="comments">

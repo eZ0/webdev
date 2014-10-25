@@ -1,3 +1,4 @@
+
 <div class="header">
 	<ul class="nav nav-pills pull-right">
            		<li>{{ HTML::linkRoute('home', 'Home', array(), array('class' => 'btn')) }}</li>

@@ -5291,7 +5291,10 @@ body {
   padding-bottom: 40px;
   padding-top: 40px; }
   body .container {
-    width: 60%; }
+    width: 100%; }
+    @media screen and (orientation: landscape) {
+      body .container {
+        width: 60%; } }
     body .container .header {
       margin-bottom: 30px;
       border-bottom: 2px solid #e5e5e5; }

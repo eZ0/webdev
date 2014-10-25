@@ -3,7 +3,7 @@
 @section('content')
 	<h2> {{ $user->username }} <small>from {{ $user->profile->location }} </small> </h2> 
 	
-	<p><img src="@if($user->profile->image !== NULL) {{ $user->profile->image }} @endif"  class="avatar"/></p>
+	<p><img src="@if($user->profile->image !== NULL) {{ URL::asset($user->profile->image) }} @else {{ asset('/assets/images/users/no-pic.jpg') }} @endif"  class="avatar"/></p>
 	
 	<div class='bio'>
 		<p>

@@ -19,7 +19,7 @@ class CreatePostTable extends Migration {
 			$table->string('title');
 			$table->text('body');
 			$table->integer('vote');
-			$table->string('image')->nullable();
+			$table->string('image')->nullable()->default("assets/images/users/no-pic.jpg");
 			$table->string('link')->nullable();
 			$table->timestamps();
 		});
