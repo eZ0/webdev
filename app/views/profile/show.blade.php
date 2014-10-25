@@ -17,6 +17,8 @@
 	@if($user->profile->github_username)
 		<p> {{ link_to('http://github.com/' . $user->profile->github_username, 'GitHub' ) }} </p>	
 	@endif
+	
+	@include( 'profile.partials.upvoted')
 
 	@if ( $user->isCurrent()) 
 		<p><small> Tell world more about yourself! {{ link_to_route('profile.edit', 'Edit Profile', $user->username) }} </small></p>

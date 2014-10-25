@@ -10,16 +10,42 @@ class PostsController extends \BaseController {
 	}
 
 	public function store()
-	{
-		
+	{	
 		$input = Input::all();
 		$id = Auth::id();
 
-		Post::create([
-			'user_id' => $id,
-			'title' => $input['title'],
-			'body' => $input['body']
-		]);
+		$rules = [
+			'title' =>'required',
+			'body' => 'required'
+		];
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()){
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+		else
+		{
+			if(Input::hasFile('image'))
+			{
+				$file = Input::file('image');
+				$filename = $file->getClientOriginalName();
+				$destpath = 'assets/images/posts/'.str_random(8).'/';
+					
+				$file->move($destpath, $filename);
+				$input['image'] = $destpath . $filename;
+			} else {
+				$input['image'] = '';
+			}
+
+			Post::create([
+				'user_id' => $id,
+				'title' => $input['title'],
+				'body' => $input['body'],
+				'link' => $input['link'],
+				'image' => $input['image']
+			]);
+		}
 
 		return Redirect::route('allposts');
 	}

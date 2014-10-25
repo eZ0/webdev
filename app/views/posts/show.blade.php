@@ -3,7 +3,10 @@
 @section('content')
 	<p> {{ link_to('/posts', '<- Back to all Posts') }} </p>
 
-	<h2> {{ $post->title }} </h2>
+	<h2> {{ $post->title }} <small> [ <a href="{{ $post->link }}">source</a> ] </small></h2>
+
+	<p><img src="@if($post->image !== NULL) {{ URL::asset($post->image) }} @endif" class="img-rounded img-responsive"/></p>
+
 	<article class="post"> {{ $post->body }} </article>
 
 	@if( Auth::check() )

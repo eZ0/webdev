@@ -13,8 +13,7 @@ class VotesController extends \BaseController {
 
 		$vote->create([
 			'user_id' => $id,
-			'post_id' => $post_id,
-			'vote' => '2'
+			'post_id' => $post_id
 		]);
 		
 		return Redirect::back();

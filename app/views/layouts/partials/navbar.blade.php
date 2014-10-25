@@ -1,7 +1,7 @@
 <div class="header">
 	<ul class="nav nav-pills pull-right">
            		<li>{{ HTML::linkRoute('home', 'Home', array(), array('class' => 'btn')) }}</li>
-           		<li>{{ HTML::linkRoute('allposts', 'News', array(), array('class' => 'btn')) }}</li>
+           		<li>{{ HTML::linkRoute('allposts', 'All Posts', array(), array('class' => 'btn')) }}</li>
            	@if (Auth::guest())
            		<li>{{ HTML::linkRoute('login', 'Sign In', array(), array('class' => 'btn')) }}</li>
             	<li>{{ HTML::linkRoute('register', 'Sign Up', array(), array('class' => 'btn')) }}</li>

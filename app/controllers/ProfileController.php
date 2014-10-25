@@ -9,14 +9,20 @@ class ProfileController extends \BaseController {
 		try 
 		{
 			$user = User::with('profile')->whereUsername($username)->firstOrFail();
+			$id = $user->id;
+			$vote = Vote::with('user')->where('user_id', '=', $id)->get();
+			
+			foreach ($vote as $v) {
+				$posts = Post::with('votes')->where('id', '=', $v->post_id)->get();
+			}
+			
 		} 
 		catch (ModelNotFoundException $e)
 		{
 			return Redirect::home();
 		} 
 
-		$view = View::make('profile.show')->withUser($user);
-		return $view;
+		return View::make('profile.show', compact('posts', 'user', 'vote'));
 	}
 
 
