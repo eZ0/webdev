@@ -12,11 +12,12 @@ class ProfileController extends \BaseController {
 			$id = $user->id;
 
 			$vote = Vote::with('user')->where('user_id', '=', $id)->get();
-			$posts = Post::with('votes');
 
-			foreach ($vote as $v) {
-				$posts = Post::with('votes')->where('id', '=', $v->post_id)->get();
-			}
+			$posts = Post::with('votes')->where('user_id', '=', $id)->get();
+
+			// foreach ($vote as $v) {
+			// 	$post = Post::with('votes')->where('id', '=', $v->post_id)->get();
+			// }
 
 		} 
 		catch (ModelNotFoundException $e)

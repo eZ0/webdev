@@ -31,7 +31,11 @@ class RegistrationController extends \BaseController {
 		}
 		else
 		{
-			$user = User::create(Input::only('username', 'email', 'password'));
+			$user = new User;
+			$user->username = Input::get('username');
+			$user->email = Input::get('email');
+			$user->password = Hash::make(Input::get('password'));
+			$user->save();
 			
 			$profile = new Profile();
 			$user->profile()->save($profile);
