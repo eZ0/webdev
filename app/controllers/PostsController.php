@@ -12,11 +12,11 @@ class PostsController extends \BaseController {
 	public function store()
 	{	
 		$input = Input::all();
-		$id = Auth::id();
+		$id    = Auth::id();
 
 		$rules = [
-			'title' =>'required',
-			'body' => 'required'
+		'title' =>'required',
+		'body'  => 'required'
 		];
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -28,10 +28,10 @@ class PostsController extends \BaseController {
 		{
 			if(Input::hasFile('image'))
 			{
-				$file = Input::file('image');
+				$file     = Input::file('image');
 				$filename = $file->getClientOriginalName();
 				$destpath = 'assets/images/posts/'.str_random(8).'/';
-					
+
 				$file->move($destpath, $filename);
 				$input['image'] = $destpath . $filename;
 			} else {
@@ -40,11 +40,11 @@ class PostsController extends \BaseController {
 
 			Post::create([
 				'user_id' => $id,
-				'title' => $input['title'],
-				'body' => $input['body'],
-				'link' => $input['link'],
-				'image' => $input['image']
-			]);
+				'title'   => $input['title'],
+				'body'    => $input['body'],
+				'link'    => $input['link'],
+				'image'   => $input['image']
+				]);
 		}
 
 		return Redirect::route('allposts');
@@ -57,16 +57,6 @@ class PostsController extends \BaseController {
 		$vote = Vote::with('posts');
 
 		return View::make('posts.show', compact('post', 'user', 'vote'));
-	}
-
-	public function edit($id)
-	{
-		//
-	}
-
-	public function update($id)
-	{
-		//
 	}
 
 }

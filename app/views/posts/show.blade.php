@@ -24,7 +24,8 @@
 			</div>
 		{{ Form::close() }}
 	@endif
-		<br/>
+	
+	<br/>
 
 	@if ($comments = $post->comments)
 		<div class="comments">

@@ -1,9 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-
 	<h3> Sign In </h3>
 	<br/>
+
 	{{ Form::open(array('route' => 'sessions.store'))}}
 
 		<div class="form-group">

@@ -9,33 +9,25 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
 	protected $table = 'users';
+
 	protected $fillable = [
 		'username', 'email', 'password'
 	];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
 	protected $hidden = array('password', 'remember_token');
 
-	public function profile()
-	{
-		return $this->hasOne('Profile');
-	}
 
 	public function isCurrent()
 	{
 		if (Auth::guest()) return false;
 
 		return Auth::user()->id == $this->id;
+	}
+
+	public function profile()
+	{
+		return $this->hasOne('Profile');
 	}
 
 	public function posts()
@@ -52,6 +44,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
       {
             return $this->hasMany('Vote');
       }
-
-
 }

@@ -15,7 +15,6 @@ class Vote extends Eloquent {
 		{ 
 			return false;
 		}
-
 	}
 
 	public function user()
@@ -27,5 +26,4 @@ class Vote extends Eloquent {
 	{
 		return $this->belongsTo('Post');
 	}
-	
 }

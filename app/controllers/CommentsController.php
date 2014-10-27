@@ -22,12 +22,12 @@ class CommentsController extends \BaseController {
 		}
 		else
 		{
-		
+
 			Comment::create([
 				'user_id' => $id,
 				'post_id' => $input['post_id'],
-				'body' => $input['body']
-			]);
+				'body'    => $input['body']
+				]);
 		}
 		return Redirect::back();
 	}

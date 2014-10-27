@@ -4,9 +4,9 @@ class VotesController extends \BaseController {
 	
 	public function store()
 	{
-		$vote = new Vote;
-		$input = Input::all();
-		$id = Auth::id();
+		$vote    = new Vote;
+		$input   = Input::all();
+		$id      = Auth::id();
 		$post_id = $input['post_id'];
 
 		$isVoted = $vote->checkUpvoted($id, $post_id);
@@ -15,7 +15,7 @@ class VotesController extends \BaseController {
 			$vote->create([
 				'user_id' => $id,
 				'post_id' => $post_id
-			]);
+				]);
 		}
 		return Redirect::back();
 	}

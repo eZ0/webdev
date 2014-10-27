@@ -8,16 +8,12 @@ class ProfileController extends \BaseController {
 	{	
 		try 
 		{
-			$user = User::with('profile')->whereUsername($username)->firstOrFail();
-			$id = $user->id;
-
-			$vote = Vote::with('user')->where('user_id', '=', $id)->get();
-
+			$user  = User::with('profile')->whereUsername($username)->firstOrFail();
+			$id    = $user->id;
+			
+			$vote  = Vote::with('user')->where('user_id', '=', $id)->get();
+			
 			$posts = Post::with('votes')->where('user_id', '=', $id)->get();
-
-			// foreach ($vote as $v) {
-			// 	$post = Post::with('votes')->where('id', '=', $v->post_id)->get();
-			// }
 
 		} 
 		catch (ModelNotFoundException $e)
@@ -39,15 +35,15 @@ class ProfileController extends \BaseController {
 
 	public function update($username)
 	{
-		$user = User::whereUsername($username)->firstOrFail();
+		$user  = User::whereUsername($username)->firstOrFail();
 		$input = Input::only(['location', 'bio', 'twitter_username', 'github_username', 'image']);
 		
 		if(Input::hasFile('image'))
 		{
-			$file = Input::file('image');
+			$file     = Input::file('image');
 			$filename = $file->getClientOriginalName();
 			$destpath = 'assets/images/users/'.$username.'/';
-				
+
 			$file->move($destpath, $filename);
 			$input['image'] = $destpath . $filename;
 		} else {
@@ -58,6 +54,4 @@ class ProfileController extends \BaseController {
 
 		return Redirect::route('profile', $user->username);
 	}
-
-
 }

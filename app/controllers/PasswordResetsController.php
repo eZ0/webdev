@@ -27,14 +27,14 @@ class PasswordResetsController extends \BaseController {
 	public function postReset()
 	{
 		$rules = [
-			'email' =>'required|email',
-			'password' => 'required|min:8',
-			'password_confirmation' => 'required|same:password'
+		'email'                 =>'required|email',
+		'password'              => 'required|min:8',
+		'password_confirmation' => 'required|same:password'
 		];
 
 		$messages = [
-			'required|min:8' => 'Your password should be strong, eat spinach and be at least 8 characters.',
-			'same' 	=> 'The :others must match.'
+		'required|min:8' => 'Your password should be strong, eat spinach and be at least 8 characters.',
+		'same'	     => 'The :others must match.'
 		];
 
 		$validator = Validator::make(Input::all(), $rules, $messages);
@@ -47,10 +47,10 @@ class PasswordResetsController extends \BaseController {
 		else
 		{
 			$creds = [
-				'email' => Input::get('email'),
-				'password' => Input::get('password'),
-				'password_confirmation' => Input::get('password_confirmation'),
-				'token' => Input::get('token')
+			'email'                 => Input::get('email'),
+			'password'              => Input::get('password'),
+			'password_confirmation' => Input::get('password_confirmation'),
+			'token'                 => Input::get('token')
 			];
 
 			$response = Password::reset($creds, function($user, $password)
@@ -64,10 +64,10 @@ class PasswordResetsController extends \BaseController {
 				case Password::INVALID_PASSWORD:
 				case Password::INVALID_TOKEN:
 				case Password::INVALID_USER:
-					return Redirect::back()->with('error', Lang::get($response));
+				return Redirect::back()->with('error', Lang::get($response));
 
 				case Password::PASSWORD_RESET:
-					return Redirect::to('/');
+				return Redirect::to('/');
 			}
 		}
 	}

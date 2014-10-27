@@ -13,9 +13,9 @@ class SessionsController extends \BaseController {
 		$input = Input::all();
 
 		$attempt = Auth::attempt([
-			'email' => $input['email'],
+			'email'    => $input['email'],
 			'password' => $input['password']
-		]);
+			]);
 
 		if ($attempt) return  Redirect::intended('/')->with('flash_message', 'You are logged in');
 		// if user is not authenticated

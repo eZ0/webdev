@@ -14,6 +14,7 @@
 	@if($user->profile->twitter_username)
 		<p> {{ link_to('http://twitter.com/' . $user->profile->twitter_username, 'Twitter' ) }} </p>
 	@endif
+	
 	@if($user->profile->github_username)
 		<p> {{ link_to('http://github.com/' . $user->profile->github_username, 'GitHub' ) }} </p>	
 	@endif

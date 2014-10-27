@@ -27,5 +27,4 @@ class Post extends Eloquent  {
       {
             return $this->hasMany('Vote');
       }
-
 }

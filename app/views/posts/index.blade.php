@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
-
 @section('content')
 	@if( Auth::check()  ) 
 		<h3>Add New Post</h3>
-			@include('posts.partials.form')
+		@include('posts.partials.form')
 	@endif
 
 	<h1>All posts</h1>

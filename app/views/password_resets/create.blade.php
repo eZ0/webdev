@@ -3,6 +3,7 @@
 @section('content')
 	<h3>Reset Your Password</h3>
 	<br/>
+	
 	@if($errors->has())
 			@foreach( $errors->all() as $error)
 				<div class="bg-danger"> {{ $error }} </div>

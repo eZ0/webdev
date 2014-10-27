@@ -16,10 +16,10 @@ class RegistrationController extends \BaseController {
 	public function store()
 	{
 		$rules = [
-			'username' =>'required',
-			'email' =>'required|email',
-			'password' => 'required',
-			'password_confirmation' => 'required|same:password'
+		'username'              =>'required',
+		'email'                 =>'required|email',
+		'password'              => 'required',
+		'password_confirmation' => 'required|same:password'
 		];
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -31,9 +31,9 @@ class RegistrationController extends \BaseController {
 		}
 		else
 		{
-			$user = new User;
+			$user           = new User;
 			$user->username = Input::get('username');
-			$user->email = Input::get('email');
+			$user->email    = Input::get('email');
 			$user->password = Hash::make(Input::get('password'));
 			$user->save();
 			
@@ -45,5 +45,4 @@ class RegistrationController extends \BaseController {
 			return Redirect::route('profile', $user->username);
 		}
 	}
-
 }
